@@ -144,11 +144,9 @@
                                                     
                                                     <div class="card-quick-area flex gap-x-2 pb-30px leading-1 transition-all duration-300">
                                                         <ul class="flex gap-x-2">
-                                                          
+                                                         
                                                             <li>
-                                                                <button data-modal-index="2" 
-                                                                class="modal-open w-9 h-9 flex items-center justify-center 
-                                                                text-center hover:bg-secondary-color hover:text-white font-bold"
+                                                                <button data-modal-index="2" class="modal-open w-9 h-9 flex items-center justify-center text-center hover:bg-secondary-color hover:text-white font-bold"
                                                                 onclick="addToWishlist({{ $property }})"
                
                                                                 id="heart-{{ $property->id }}"
@@ -156,7 +154,7 @@
                                                                     <i class="flaticon-heart-1 leading-1"></i>
                                                                 </button>
                                                             </li>
-                                                          
+                                                           
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -170,7 +168,7 @@
                                                         @endif
                                                        @endforeach
                                                     
-                                                       
+                                                        
                                                     </h5>
                                                 </div>
                                             </div>

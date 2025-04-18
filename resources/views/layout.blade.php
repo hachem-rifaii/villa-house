@@ -56,49 +56,7 @@
         </div>
         
         <!-- pinned select area -->
-        <div class="container mt-30 4xl:-mt-65px relative z-20">
-            <form action="" method="post">
-            @csrf
-          
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-30px lg:gap-4 xl:gap-30px py-10 px-25px md:p-10 shadow-box-shadow-1 border border-border-color-1 bg-white">
-                <div>
-                    <select class="selectize">
-                        <option value="Choose Area" data-display="Select">Property type</option>
-                        <option value="Chicago">villa</option>
-                        <option value="London">house</option>
-                    </select>
-                </div>
-                <div>
-                    <select class="selectize">
-                        <option data-display="Select">Bedrooms</option>
-                        <option>2</option>
-                        <option>1</option>
-                    </select>
-                </div>
-                <div>
-                    <select class="selectize">
-                        <option data-display="Select">currency</option>
-                        <option>gbp</option>
-                        <option>eur</option>
-                    </select>
-                    <h3>Price Range</h3>
-                    <input type="text" placeholder="Min - Max 150,000,000">
-                </div>
-                <div class="">
-                    <select name="type" id="" class="selectize">
-                        <option value="rent">Rent</option>
-                        <option value="sell">Sell</option>
-                    </select>
-                </div>
-                <div class="text-center ">
-                    <h5 class="uppercase text-sm md:text-base text-white relative group whitespace-nowrap font-normal mb-0 transition-all duration-300 border border-secondary-color hover:border-heading-color inline-block">
-                        <span class="inline-block absolute top-0 right-0 w-full h-full bg-secondary-color group-hover:bg-black hover:bg-primary-cogroup-lor z-1 group-hover:w-0 transition-all duration-300"></span>
-                        <a href="{{ route('shop') }}" class="relative z-10 px-5 md:px-25px lg:px-10 py-10px md:py-3 lg:py-17px group-hover:text-heading-color leading-23px">Find Now</a>
-                    </h5>
-                </div>
-            </div>
-        </form>
-        </div>
+      
     </section>
 
     <!-- Rest of your home page content -->
@@ -111,3 +69,10 @@
     @include('sections.news')
     @include('sections.testimonials')
 @endsection
+
+
+@push('scripts')
+
+
+
+@endpush

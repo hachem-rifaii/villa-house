@@ -44,42 +44,49 @@
         >
       
           <!-- card 6 -->
-          <div
-            class="service-card basis-full sm:basis-1/2 lg:basis-1/3 px-15px mb-30px"
-          >
-            <div
-              class="border border-white-6 hover:shadow-box-shadow-1 bg-white relative transition-all duration-300"
-            >
-              <div class="text-center mb-5">
-                <img
-                  src="./assets/img/gallery/10.jpg"
-                  alt=""
-                  class="inline-block w-full"
-                >
-              </div>
-              <div class="text-center px-15px py-25px">
-                <h6
-                  class="text-17px md:text-lg lg:text-xl text-heading-color font-bold mb-15px"
-                >
-                  <a
-                    class="hover:text-secondary-color leading-1.3 md:leading-1.3 lg:leading-1.3"
-                    href="team-details.html"
-                    >Branded homes</a
-                  >
-                </h6>
-                <h6
-                  class="text-sm md:text-15px lg:text-base font-bold mb-15px"
-                >
-                  <span
-                    class="text-secondary-color leading-1.3 md:leading-1.3 lg:leading-1.3"
-                    >CURATED PROJECTS IN DUBAI MADE IN COLLABORATION WITH FAMOUS BRANDS</span
-                  >
-                </h6>
-                <!-- socila -->
-               
-              </div>
-            </div>
-          </div>
+           @forelse ($catalogs as $catalog)
+           <div
+           class="service-card basis-full sm:basis-1/2 lg:basis-1/3 px-15px mb-30px"
+         >
+           <div
+             class="border border-white-6 hover:shadow-box-shadow-1 bg-white relative transition-all duration-300"
+           >
+             <div class="text-center mb-5">
+               <img
+                 src="{{ asset('storage/'.$catalog->image) }}"
+                 alt=""
+                 class="inline-block w-full"
+               >
+             </div>
+             <div class="text-center px-15px py-25px">
+               <h6
+                 class="text-17px md:text-lg lg:text-xl text-heading-color font-bold mb-15px"
+               >
+                 <a
+                   class="hover:text-secondary-color leading-1.3 md:leading-1.3 lg:leading-1.3"
+                   href="team-details.html"
+                   >{{$catalog->name}}</a
+                 >
+               </h6>
+               <h6
+                 class="text-sm md:text-15px lg:text-base font-bold mb-15px"
+               >
+                 <span
+                   class="text-secondary-color leading-1.3 md:leading-1.3 lg:leading-1.3"
+                   >{{$catalog->description}}</span
+                 >
+               </h6>
+               <!-- socila -->
+              
+             </div>
+           </div>
+         </div>
+           @empty
+            <div class="flex w-full justify-center h-full items-center">
+                <h1 class="text-2xl font-bold text-heading-color">No catalog found</h1>  
+            </div>  
+           
+           @endforelse
         </div>
       </div>
     </section>

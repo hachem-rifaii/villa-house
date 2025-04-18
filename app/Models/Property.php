@@ -22,6 +22,7 @@ class Property extends Model
         'address',
         'is_for_sale',
         'is_featured',
+        'off_plan',
         'status',
         'is_Exclusive',
         'images',
@@ -35,6 +36,7 @@ class Property extends Model
 
     protected $casts = [
         'is_for_sale' => 'boolean',
+        'off_plan' => 'boolean',
         'location' => 'array',
         'is_Exclusive' => 'boolean',
         'images' => 'array',

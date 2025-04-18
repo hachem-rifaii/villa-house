@@ -2023,6 +2023,11 @@ video {
   row-gap: 10px;
 }
 
+.bg-favorite-red-add{
+  background-color: #FF5A3C;
+  color: #ffff;
+}
+
 .gap-y-15px{
   row-gap: .9375rem;
 }

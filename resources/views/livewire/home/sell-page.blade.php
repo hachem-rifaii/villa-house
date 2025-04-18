@@ -144,21 +144,18 @@
                                                 
                                                 <div class="card-quick-area flex gap-x-2 pb-30px leading-1 transition-all duration-300">
                                                     <ul class="flex gap-x-2">
+                                                     
                                                         <li>
-                                                            <button data-modal-index="1" class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold">
-                                                                <i class="flaticon-expand leading-1"></i>
-                                                            </button>
-                                                        </li>
-                                                        <li>
-                                                            <button data-modal-index="2" class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold">
+                                                            <button data-modal-index="2" class="modal-open w-9 h-9 flex items-center justify-center 
+                                                             text-center hover:bg-secondary-color hover:text-white font-bold"
+                                                             onclick="addToWishlist({{ $property }})"
+               
+                                                             id="heart-{{ $property->id }}"
+                                                             >
                                                                 <i class="flaticon-heart-1 leading-1"></i>
                                                             </button>
                                                         </li>
-                                                        <li>
-                                                            <a href="{{ route('product.details') }}" class="w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold">
-                                                                <i class="flaticon-add leading-1"></i>
-                                                            </a>
-                                                        </li>
+                                                     
                                                     </ul>
                                                 </div>
                                             </div>
@@ -172,7 +169,7 @@
                                                     @endif
                                                    @endforeach
                                                 
-                                                    <label class="text-sm font-normal">/Month</label>
+                                                  
                                                 </h5>
                                             </div>
                                         </div>
@@ -251,9 +248,7 @@
                         <h4 class="mb-10px text-lg md:text-xl lg:text-22px xl:text-2xl text-heading-color font-bold">
                             <span class="leading-1.3 md:leading-1.3 xl:leading-1.3">Advance Information</span>
                         </h4>
-                        <p class="mb-30px text-[12.25px] lg:text-sm">
-                            <span class="lg:leading-1 8">About 9,620 results (0.62 seconds)</span>
-                        </p>
+                     
                     </div>
                     
                     <!-- sidebar filter -->

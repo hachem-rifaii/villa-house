@@ -89,6 +89,7 @@ class PropertyResource extends Resource
 
                     Toggle::make('is_for_sale')->default(false),
                     Toggle::make('is_Exclusive')->default(false),
+                    Toggle::make('off_plan')->default(false),
 
                    Section::make('features')->schema([
                     CheckboxList::make('featureds')->label('Featured')->columnSpan(2)->relationship('featureds', 'name'),
@@ -188,6 +189,10 @@ class PropertyResource extends Resource
                 Tables\Filters\TernaryFilter::make('is_for_sale')
                     ->trueLabel('For Sale')
                     ->falseLabel('For Rent'),
+                Tables\Filters\TernaryFilter::make('off_plan')
+                    ->trueLabel('Off Plan')
+                    ->falseLabel('On Plan'),
+
                 Tables\Filters\TernaryFilter::make('is_Exclusive')
                     ->trueLabel('Featured')
                     ->falseLabel('Not Featured'),

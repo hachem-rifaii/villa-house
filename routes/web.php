@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Home\agent;
+use App\Http\Controllers\Home\Catalog;
+use App\Http\Controllers\Home\HomePageController;
 use App\Http\Controllers\Home\requestController;
 use App\Http\Controllers\Home\TestMapController;
 use Illuminate\Support\Facades\Route;
@@ -16,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 // Route::post('/request', [requestController::class, 'store'])->name('request.store');
 
 
-Route::get('/', function () {
-    return view('layout');
-})->name('home');
+Route::get('/', [HomePageController::class , 'index'])->name('home');
 
 Route::get('/sell', function () {
     return view('pages.sell');
@@ -32,9 +32,7 @@ Route::get('/offplan', function () {
     return view('pages.ofplan');
 })->name('offplan');
 
-Route::get('/catalog', function () {
-    return view('pages.catalog');
-})->name('catalog');
+Route::get('/catalog', [Catalog::class , 'index'])->name('catalog');
 
 Route::get('/agents', [agent::class , 'index'])->name('agents');
 

@@ -19,53 +19,57 @@
         <div class="swiper featured-apartments-slider static">
           <div class="swiper-wrapper">
            <!-- card 2 -->
-           <div class="swiper-slide mb-65px px-15px">
-            <div
-              class="group border border-border-color-13 shadow-box-shadow-4"
-            >
-              <!-- card thumbs -->
-              <div class="relative leading-1">
-                <a
-                  href="team-details.html"
-                  class="overflow-hidden"
-                >
-                <img 
-                src="{{ asset('assets/img/OIP.jpeg') }}" 
-                class="w-full group-hover:scale-110 transition-all duration-700" 
-                alt=""
-            >
-            
-                </a>
-                <div
-                  class="absolute w-full left-0 bottom-0 px-15px pb-15px lg:px-30px bg-transparent bg-gradient-color-5"
-                >
-                  <div
-                    class="text-sm text-white flex justify-between items-center"
-                  >
-                   
-                  
-                  </div>
-                </div>
-                
-                  
-                </div>
-              </div>
-              <!-- card body -->
-              <div class="px-5 pt-4 lg:px-30px lg:pt-5">
-             
-                <h4
-                  class="text-lg md:text-xl lg:text-22px font-semibold text-heading-color mb-15px"
-                >
+            @forelse ($teams as $team )
+            <div class="swiper-slide mb-65px px-15px">
+              <div
+                class="group border border-border-color-13 shadow-box-shadow-4"
+              >
+                <!-- card thumbs -->
+                <div class="relative leading-1">
                   <a
                     href="team-details.html"
-                    class="hover:text-secondary-color leading-1.3"
-                    >rami  rami</a
+                    class="overflow-hidden"
                   >
-                </h4>
+                  <img 
+                  src="{{ asset('storage/'.$team->image) }}" 
+                  class="w-full group-hover:scale-110 transition-all duration-700" 
+                  alt=""
+              >
               
-              </div>
-             
-              </div>
+                  </a>
+                  <div
+                    class="absolute w-full left-0 bottom-0 px-15px pb-15px lg:px-30px bg-transparent bg-gradient-color-5"
+                  >
+                    <div
+                      class="text-sm text-white flex justify-between items-center"
+                    >
+                     
+                    
+                    </div>
+                  </div>
+                  
+                    
+                  </div>
+                </div>
+                <!-- card body -->
+                <div class="px-5 pt-4 lg:px-30px lg:pt-5">
+               
+                  <h4
+                    class="text-lg md:text-xl lg:text-22px font-semibold text-heading-color mb-15px"
+                  >
+                    <a
+                      href="team-details.html"
+                      class="hover:text-secondary-color leading-1.3"
+                      >{{ $team->name }}</a
+                    >
+                  </h4>
+                
+                </div>
+               
+                </div>
+            @empty
+              
+            @endforelse
             </div>
           </div>
               </div>
@@ -98,6 +102,8 @@
   <div class="swiper featured-apartments-slider static">
     <div class="swiper-wrapper">
      <!-- card 2 -->
+
+     @forelse ($properties as $property )
      <div class="swiper-slide mb-65px px-15px">
       <div
         class="group border border-border-color-13 shadow-box-shadow-4"
@@ -109,7 +115,7 @@
             class="overflow-hidden"
           >
             <img
-              src="./assets/img/product-3/2.jpg"
+              src="{{ asset('storage/'.$property->images[0]) }}"
               class="w-full group-hover:scale-110 transition-all duration-700"
               alt=""
             >
@@ -123,43 +129,28 @@
               <a
                 href="locations.html"
                 class="hover:text-secondary-color"
-                ><i class="flaticon-pin"></i> Belmont Gardens,
-                Chicago</a
+                ><i class="flaticon-pin"></i>{{$property->address}}</a
               >
-              <ul class="flex gap-10px">
-                <li>
-                  <a
-                    class="w-30px lg:w-42px h-30px flex justify-center items-center bg-transparent lg:bg-white lg:bg-opacity-35 hover:text-secondary-color"
-                    href="product-details.html"
-                    ><i class="fas fa-camera pr-1 leading-1"></i>
-                    4</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="w-30px lg:w-42px h-30px flex justify-center items-center bg-transparent lg:bg-white lg:bg-opacity-35 hover:text-secondary-color"
-                    href="product-details.html"
-                    ><i class="fas fa-film pr-1 leading-1"></i> 2</a
-                  >
-                </li>
-              </ul>
+            
             </div>
           </div>
-          <div
-            class="text-xs sm:text-13px text-white px-10px py-1 sm:px-15px sm:pt-3px sm:pb-0 bg-secondary-color uppercase font-semibold absolute top-[15px] right-[18px]"
-          >
-            <span class="leading-5 sm:leading-25px block"
-              >for rent</span
-            >
-          </div>
+         
         </div>
         <!-- card body -->
         <div class="px-5 pt-4 lg:px-30px lg:pt-5">
           <h5
             class="text-lg text-secondary-color font-semibold mb-5px"
           >
-            <span class="leading-1.8">$34,900</span>
-            <label class="text-sm font-normal">/Month</label>
+           
+             
+              @foreach($property->prices as $price)
+                 @if ($price->currency && $price->currency->code === 'USD')
+                 <span class="leading-1.8">    {{ number_format($price->price, 2) }} {{ $price->currency->code }}  </span>
+                    @endif
+                 @endforeach
+
+          
+            {{-- <label class="text-sm font-normal">/Month</label> --}}
           </h5>
           <h4
             class="text-lg md:text-xl lg:text-22px font-semibold text-heading-color mb-15px"
@@ -167,22 +158,19 @@
             <a
               href="product-details.html"
               class="hover:text-secondary-color leading-1.3"
-              >Modern Apartments</a
+              >{{ $property->title }}</a
             >
           </h4>
-          <p class="text-sm mb-15px">
-            <span class="leading-1.8"
-              >Beautiful Huge 1 Family House In Heart Of
-              <br >Westbury. Newly Renovated With New Wood</span
-            >
-          </p>
+          <p class="text-sm mb-15px line-clamp-2 leading-1.8">
+            {{ $property->description }}
+        </p>
 
           <ul class="flex flex-wrap gap-15px py-4">
             <li
               class="text-sm pr-4 border-r border-primary-color border-opacity-20"
             >
               <p class="leading-1.8 font-bold">
-                3<i class="flaticon-bed ml-1"></i>
+                {{$property->bedrooms}}<i class="flaticon-bed ml-1"></i>
               </p>
               <p class="leading-1.8">Bedrooms</p>
             </li>
@@ -190,14 +178,14 @@
               class="text-sm pr-4 border-r border-primary-color border-opacity-20"
             >
               <p class="leading-1.8 font-bold">
-                2<i class="flaticon-clean ml-1"></i>
+                {{$property->bathrooms}}<i class="flaticon-clean ml-1"></i>
               </p>
-              <p class="leading-1.8">Bedrooms</p>
+              <p class="leading-1.8">Bathrooms</p>
             </li>
 
             <li class="text-sm">
               <p class="leading-1.8 font-bold">
-                3450<i
+                {{ $property->area }}<i
                   class="flaticon-square-shape-design-interface-tool-symbol ml-1"
                 ></i>
               </p>
@@ -215,7 +203,7 @@
             <div class="flex gap-x-3">
               <a href="team-details.html" class="w-10 h-10"
                 ><img
-                  src="./assets/img/blog/author.jpg"
+                  src="{{ asset('storage/'.$property->team->image) }}"
                   alt=""
                   class="w-full h-full rounded-100%"
               ></a>
@@ -226,41 +214,34 @@
                   <a
                     class="leading-1.3 hover:text-secondary-color"
                     href="team-details.html"
-                    >William Seklo</a
+                    >{{ $property->team->name }}</a
                   >
                 </h4>
-                <span class="text-xs"> Estate Agents </span>
+                <span class="text-xs"> {{ $property->team->specialization }} </span>
               </div>
             </div>
             <ul class="flex gap-x-2">
+         
               <li>
                 <button
-                  class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
-                  data-modal-index="1"
-                >
-                  <i class="flaticon-expand leading-1"></i>
-                </button>
-              </li>
-              <li>
-                <button
-                  class="modal-open w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
+                  class="modal-open w-9 h-9 flex items-center justify-center  text-center hover:bg-secondary-color hover:text-white font-bold"
                   data-modal-index="2"
+                  onclick="addToWishlist({{ $property }})"
+               
+                  id="heart-{{ $property->id }}"
                 >
                   <i class="flaticon-heart-1 leading-1"></i>
                 </button>
               </li>
-              <li>
-                <a
-                  href="product-details.html"
-                  class="w-9 h-9 flex items-center justify-center bg-section-bg-1 text-center hover:bg-secondary-color hover:text-white font-bold"
-                  ><i class="flaticon-add leading-1"></i
-                ></a>
-              </li>
+         
             </ul>
           </div>
         </div>
       </div>
-    </div>
+    </div>       
+     @empty
+       
+     @endforelse
           
           
        
